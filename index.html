@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zak Dental - Interactive Call Flow</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/styles/themes.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fas fa-tooth"></i> Zak Dental Call Flow</h1>
+                <div class="agent-info">
+                    <input type="text" id="agentName" placeholder="Enter your name" />
+                </div>
+            </div>
+            <div class="header-center">
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="Search for steps, keywords..." />
+                    <button id="voiceSearchBtn" class="voice-btn" title="Voice Search">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="call-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">00:00</span>
+                </div>
+                <button id="themeToggle" class="theme-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <span class="progress-text">Step <span id="currentStep">1</span> of <span id="totalSteps">22</span></span>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="quick-nav">
+                    <h3><i class="fas fa-list"></i> Quick Navigation</h3>
+                    <select id="jumpToStep">
+                        <option value="">Jump to step...</option>
+                    </select>
+                </div>
+                
+                <div class="bookmarks">
+                    <h3><i class="fas fa-star"></i> Bookmarks</h3>
+                    <ul id="bookmarksList"></ul>
+                </div>
+
+                <div class="quick-actions">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <button class="action-btn" data-search="insurance">Insurance Check</button>
+                    <button class="action-btn" data-search="schedule">Scheduling</button>
+                    <button class="action-btn" data-search="specialty">Specialty Referral</button>
+                    <button class="action-btn" data-search="medicare">Medicare</button>
+                    <button class="action-btn" data-search="wrap up">Wrap Up</button>
+                </div>
+            </aside>
+
+            <!-- Step Display -->
+            <section class="step-display">
+                <div class="step-header">
+                    <h2 id="stepTitle">Loading...</h2>
+                    <button id="bookmarkBtn" class="bookmark-btn" title="Bookmark this step">
+                        <i class="far fa-star"></i>
+                    </button>
+                </div>
+
+                <div class="step-content">
+                    <div id="stepScript" class="step-script"></div>
+                    
+                    <div id="stepActions" class="step-actions"></div>
+                    
+                    <div id="stepBranches" class="step-branches"></div>
+                </div>
+
+                <div class="step-notes">
+                    <h4><i class="fas fa-sticky-note"></i> Agent Notes</h4>
+                    <textarea id="stepNotes" placeholder="Add your notes for this step..."></textarea>
+                </div>
+
+                <div class="step-navigation">
+                    <button id="prevBtn" class="nav-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <button id="nextBtn" class="nav-btn next-btn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Search Results Modal -->
+        <div id="searchModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Search Results</h3>
+                    <button id="closeSearchModal" class="close-btn">&times;</button>
+                </div>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+        </div>
+
+        <!-- Voice Search Status -->
+        <div id="voiceStatus" class="voice-status">
+            <i class="fas fa-microphone-slash"></i>
+            <span>Click microphone to start voice search</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/data/callFlowSteps.js"></script>
+    <script src="src/data/searchKeywords.js"></script>
+    <script src="src/components/StepDisplay.js"></script>
+    <script src="src/components/SearchBar.js"></script>
+    <script src="src/components/VoiceSearch.js"></script>
+    <script src="src/components/Navigation.js"></script>
+    <script src="src/components/ProgressIndicator.js"></script>
+    <script src="src/app.js"></script>
+</body>
+</html>
